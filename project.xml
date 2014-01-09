@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	
-	<!--meta title="Basic Load 3DS Away3D OpenFL" package="com.geepers.away3d" version="1.0.0" company="Geepers.co.uk" />
+	<!--meta title="Basic Load 3DS Away3D OpenFL" package="examples.away3d" version="1.0.0"  />
 	<app main="Basic_Load3DS" file="Basic_Load3DS" path="Export" /-->
-	<!--meta title="Basic SkyBox Away3D OpenFL" package="com.geepers.away3d" version="1.0.0" company="Geepers.co.uk" />
+	<!--meta title="Basic SkyBox Away3D OpenFL" package="examples.away3d" version="1.0.0"  />
 	<app main="Basic_SkyBox" file="Basic_SkyBox" path="Export" /-->
-	<!--meta title="Basic Shading 3DS Away3D OpenFL" package="com.geepers.away3d" version="1.0.0" company="Geepers.co.uk" />
+	<!--meta title="Basic Shading 3DS Away3D OpenFL" package="examples.away3d" version="1.0.0"  />
 	<app main="Basic_Shading" file="Basic_Shading" path="Export" /-->
-	<meta title="Basic View Away3D OpenFL" package="com.geepers.away3d" version="1.0.0" company="Geepers.co.uk" />
+	<meta title="Basic View Away3D OpenFL" package="examples.away3d" version="1.0.0"  />
 	<app main="Basic_View" file="Basic_View" path="Export" />
 
-    <window width="1024" height="700" if="desktop" />
-    <window orientation="landscape" fps="60" />
+	<window width="1024" height="700" if="desktop" />
+	<window orientation="landscape" fps="60" />
 
-    <window depth-buffer="true" />
+	<window depth-buffer="true" />
 	
 	<source path="Source" />
 
-	<classpath path="../Libraries/away3d-core-openfl" />
-	<classpath path="/Users/Greg/Trunks/openfl-stage3d/src" />
-	<classpath path="/Users/Greg/Trunks/stage3d-glsl-master/src" />
-	
+	<classpath path="away3d-core-openfl" />
+
 	<haxelib name="openfl" />
 	
 	<assets path="Assets" exclude="nme.svg" />
