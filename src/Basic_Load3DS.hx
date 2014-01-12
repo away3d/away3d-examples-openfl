@@ -61,9 +61,9 @@ package;
 
 	import flash.Lib;
 	
-@:bitmap("assets/soldier_ant.jpg") class AntTexture extends BitmapData {}
-@:file("assets/soldier_ant.3ds") class AntModel extends ByteArray {}
-@:bitmap("assets/CoarseRedSand.jpg") class SandTexture extends BitmapData {}
+@:bitmap("embeds/soldier_ant.jpg") class AntTexture extends BitmapData {}
+@:file("embeds/soldier_ant.3ds") class AntModel extends ByteArray {}
+@:bitmap("embeds/CoarseRedSand.jpg") class SandTexture extends BitmapData {}
 
 	//[SWF(backgroundColor="#000000", frameRate="30", quality="LOW")]
 	

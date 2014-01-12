@@ -50,12 +50,12 @@ package;
 	import flash.events.*;
 	import flash.geom.Vector3D;
 
-@:bitmap("assets/skybox/snow_negative_x.jpg") class EnvNegX extends BitmapData {}
-@:bitmap("assets/skybox/snow_negative_y.jpg") class EnvNegY extends BitmapData {}
-@:bitmap("assets/skybox/snow_negative_z.jpg") class EnvNegZ extends BitmapData {}
-@:bitmap("assets/skybox/snow_positive_x.jpg") class EnvPosX extends BitmapData {}
-@:bitmap("assets/skybox/snow_positive_y.jpg") class EnvPosY extends BitmapData {}
-@:bitmap("assets/skybox/snow_positive_z.jpg") class EnvPosZ extends BitmapData {}
+@:bitmap("embeds/skybox/snow_negative_x.jpg") class EnvNegX extends BitmapData {}
+@:bitmap("embeds/skybox/snow_negative_y.jpg") class EnvNegY extends BitmapData {}
+@:bitmap("embeds/skybox/snow_negative_z.jpg") class EnvNegZ extends BitmapData {}
+@:bitmap("embeds/skybox/snow_positive_x.jpg") class EnvPosX extends BitmapData {}
+@:bitmap("embeds/skybox/snow_positive_y.jpg") class EnvPosY extends BitmapData {}
+@:bitmap("embeds/skybox/snow_positive_z.jpg") class EnvPosZ extends BitmapData {}
 
 //	[SWF(backgroundColor="#000000", frameRate="60", quality="LOW")]
 	

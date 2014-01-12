@@ -54,8 +54,7 @@ import flash.geom.Vector3D;
 
 //[SWF(backgroundColor="#000000", frameRate="60", quality="LOW")]
 
-@:bitmap("assets/floor_diffuse.jpg") class FloorDiffuse extends BitmapData {}
-@:bitmap("assets/trinket_diffuse.jpg") class TrinketDiffuse extends BitmapData {}
+@:bitmap("embeds/floor_diffuse.jpg") class FloorDiffuse extends BitmapData {}
 
 class Basic_View extends Sprite
 {

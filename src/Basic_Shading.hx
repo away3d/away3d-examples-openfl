@@ -56,16 +56,16 @@ package;
 
 	import flash.Lib;
 
-@:bitmap("assets/trinket_diffuse.jpg") class TrinketDiffuse extends BitmapData {}
-@:bitmap("assets/trinket_specular.jpg") class TrinketSpecular extends BitmapData {}
-@:bitmap("assets/trinket_normal.jpg") class TrinketNormals extends BitmapData {}
-@:bitmap("assets/beachball_diffuse.jpg") class BeachBallDiffuse extends BitmapData {}
-@:bitmap("assets/beachball_specular.jpg") class BeachBallSpecular extends BitmapData {}
-@:bitmap("assets/weave_diffuse.jpg") class WeaveDiffuse extends BitmapData {}
-@:bitmap("assets/weave_normal.jpg") class WeaveNormals extends BitmapData {}
-@:bitmap("assets/floor_diffuse.jpg") class FloorDiffuse extends BitmapData {}
-@:bitmap("assets/floor_specular.jpg") class FloorSpecular extends BitmapData {}
-@:bitmap("assets/floor_normal.jpg") class FloorNormals extends BitmapData {}
+@:bitmap("embeds/trinket_diffuse.jpg") class TrinketDiffuse extends BitmapData {}
+@:bitmap("embeds/trinket_specular.jpg") class TrinketSpecular extends BitmapData {}
+@:bitmap("embeds/trinket_normal.jpg") class TrinketNormals extends BitmapData {}
+@:bitmap("embeds/beachball_diffuse.jpg") class BeachBallDiffuse extends BitmapData {}
+@:bitmap("embeds/beachball_specular.jpg") class BeachBallSpecular extends BitmapData {}
+@:bitmap("embeds/weave_diffuse.jpg") class WeaveDiffuse extends BitmapData {}
+@:bitmap("embeds/weave_normal.jpg") class WeaveNormals extends BitmapData {}
+@:bitmap("embeds/floor_diffuse.jpg") class FloorDiffuse extends BitmapData {}
+@:bitmap("embeds/floor_specular.jpg") class FloorSpecular extends BitmapData {}
+@:bitmap("embeds/floor_normal.jpg") class FloorNormals extends BitmapData {}
 	
 //[SWF(backgroundColor="#000000", frameRate="60", quality="LOW")]
 	class Basic_Shading extends Sprite
