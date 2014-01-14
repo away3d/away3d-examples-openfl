@@ -17,7 +17,9 @@
 	
 	<source path="src" />
 
-	<classpath path="away3d-core-openfl" />
+	<classpath path="away3d-core-openfl/src" />
+	<classpath path="openfl-stage3d/src" />
+	<classpath path="stage3d-glsl-master/src" />
 
 	<haxelib name="openfl" />
 	
