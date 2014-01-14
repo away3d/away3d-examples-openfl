@@ -15,14 +15,14 @@
 
 	<window depth-buffer="true" />
 	
-	<source path="Source" />
+	<source path="src" />
 
 	<classpath path="away3d-core-openfl" />
 
 	<haxelib name="openfl" />
 	
-	<assets path="Assets" exclude="nme.svg" />
+	<assets path="embeds" exclude="nme.svg" />
 
-	<icon path="Assets/nme.svg" />
+	<icon path="embeds/nme.svg" />
 	
 </project>
