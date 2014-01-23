@@ -65,8 +65,6 @@ package;
 @:file("embeds/soldier_ant.3ds") class AntModel extends ByteArray {}
 @:bitmap("embeds/CoarseRedSand.jpg") class SandTexture extends BitmapData {}
 
-	//[SWF(backgroundColor="#000000", frameRate="30", quality="LOW")]
-	
 	class Basic_Load3DS extends Sprite
 	{
 		//engine variables
@@ -135,7 +133,7 @@ package;
 			
 			//setup materials
 			_groundMaterial = new TextureMaterial(Cast.bitmapTexture(SandTexture));
-			//_groundMaterial.shadowMethod = new FilteredShadowMapMethod(_light);
+			_groundMaterial.shadowMethod = new FilteredShadowMapMethod(_light);
 			_groundMaterial.lightPicker = _lightPicker;
 			_groundMaterial.specular = 0;
 			_ground = new Mesh(new PlaneGeometry(1000, 1000), _groundMaterial);
@@ -183,13 +181,12 @@ package;
 		private function onAssetComplete(e:Event):Void
 		{
             var event:AssetEvent = cast(e, AssetEvent);
-			trace("Basic_Load3DS.onAssetComplete:"+Std.string(event.asset.assetType));
 			if (event.asset.assetType == AssetType.MESH) {
 				var mesh:Mesh = cast(event.asset, Mesh);
- 				//mesh.castsShadows = true;
+ 				mesh.castsShadows = true;
 			} else if (event.asset.assetType == AssetType.MATERIAL) {
 				var material:TextureMaterial = cast(event.asset, TextureMaterial);
-				//material.shadowMethod = new FilteredShadowMapMethod(_light);
+				material.shadowMethod = new FilteredShadowMapMethod(_light);
 				material.lightPicker = _lightPicker;
 				material.gloss = 30;
 				material.specular = 1;
