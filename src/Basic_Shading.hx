@@ -67,41 +67,8 @@ package;
 @:bitmap("embeds/floor_specular.jpg") class FloorSpecular extends BitmapData {}
 @:bitmap("embeds/floor_normal.jpg") class FloorNormals extends BitmapData {}
 	
-//[SWF(backgroundColor="#000000", frameRate="60", quality="LOW")]
 	class Basic_Shading extends Sprite
 	{
-		//signature swf
-    	// [Embed(source="/../embeds/signature.swf", symbol="Signature")]
-    	// private var SignatureSwf:Class;
-    	
-		//cube textures
-		// [Embed(source="/../embeds/trinket_diffuse.jpg")]
-     	// public static var TrinketDiffuse:Class;
-		// [Embed(source="/../embeds/trinket_specular.jpg")]
-		// public static var TrinketSpecular:Class;
-		// [Embed(source="/../embeds/trinket_normal.jpg")]
-		// public static var TrinketNormals:Class;
-		
-     	//sphere textures
-		// [Embed(source="/../embeds/beachball_diffuse.jpg")]
-  		//public static var BeachBallDiffuse:Class;
-		// [Embed(source="/../embeds/beachball_specular.jpg")]
-		// public static var BeachBallSpecular:Class;
-		
-  		//torus textures
-		// [Embed(source="/../embeds/weave_diffuse.jpg")]
-		// public static var WeaveDiffuse:Class;
-		// [Embed(source="/../embeds/weave_normal.jpg")]
-		// public static var WeaveNormals:Class;
-		
-		//plane textures
-		// [Embed(source="/../embeds/floor_diffuse.jpg")]
-		// public static var FloorDiffuse:Class;
-		// [Embed(source="/../embeds/floor_specular.jpg")]
-		// public static var FloorSpecular:Class;
-		// [Embed(source="/../embeds/floor_normal.jpg")]
-		// public static var FloorNormals:Class;
-    	
     	//engine variables
     	private var scene:Scene3D;
 		private var camera:Camera3D;
@@ -183,17 +150,6 @@ package;
 			cameraController.panAngle = 45;
 			cameraController.tiltAngle = 20;
 			
-			//view.addSourceURL("srcview/index.html");
-			addChild(view);
-			
-			//add signature
-			// Signature = Sprite(new SignatureSwf());
-			// SignatureBitmap = new Bitmap(new BitmapData(Signature.width, Signature.height, true, 0));
-			// stage.quality = StageQuality.HIGH;
-			// SignatureBitmap.bitmapData.draw(Signature);
-			// stage.quality = StageQuality.LOW;
-			// addChild(SignatureBitmap);
-		
 			//addChild(new AwayStats(view));
 
 			var fps = new openfl.display.FPS(0, 0, 0xffffff);
@@ -294,7 +250,7 @@ package;
 		private function initListeners():Void
 		{
 			//addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			view.stage3DProxy.context3D.setRenderMethod(onEnterFrame);
+			view.stage3DProxy.setRenderCallback(onEnterFrame);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			stage.addEventListener(Event.RESIZE, onResize);

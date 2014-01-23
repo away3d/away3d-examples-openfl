@@ -60,21 +60,7 @@ package;
 //	[SWF(backgroundColor="#000000", frameRate="60", quality="LOW")]
 	
 	class Basic_SkyBox extends Sprite
-	{
-		// // Environment map.
-		// [Embed(source="../embeds/skybox/snow_positive_x.jpg")]
-		// private var EnvPosX:Class;
-		// [Embed(source="../embeds/skybox/snow_positive_y.jpg")]
-		// private var EnvPosY:Class;
-		// [Embed(source="../embeds/skybox/snow_positive_z.jpg")]
-		// private var EnvPosZ:Class;
-		// [Embed(source="../embeds/skybox/snow_negative_x.jpg")]
-		// private var EnvNegX:Class;
-		// [Embed(source="../embeds/skybox/snow_negative_y.jpg")]
-		// private var EnvNegY:Class;
-		// [Embed(source="../embeds/skybox/snow_negative_z.jpg")]
-		// private var EnvNegZ:Class;
-		
+	{		
 		//engine variables
 		private var _view:View3D;
 		
@@ -94,7 +80,6 @@ package;
 			
 			//setup the view
 			_view = new View3D();
-			addChild(_view);
 			
 			//setup the camera
 			_view.camera.z = -600;
@@ -121,8 +106,7 @@ package;
 			_view.scene.addChild(_skyBox);
 			
 			//setup the render loop
-			//addEventListener(Event.ENTER_FRAME, _onEnterFrame);
-			_view.stage3DProxy.context3D.setRenderMethod(_onEnterFrame);
+			_view.stage3DProxy.setRenderCallback(_onEnterFrame);
 			stage.addEventListener(Event.RESIZE, onResize);
 			onResize();
 

@@ -69,22 +69,6 @@ package;
 	
 	class Basic_Load3DS extends Sprite
 	{
-		// //signature swf
-		// [Embed(source="/../embeds/signature.swf", symbol="Signature")]
-		// public static var SignatureSwf:Class;
-		
-		// //solider ant texture
-		// [Embed(source="/../embeds/soldier_ant.jpg")]
-		// public static var AntTexture:Class;
-		
-		// //solider ant model
-		// [Embed(source="/../embeds/soldier_ant.3ds",mimeType="application/octet-stream")]
-		// public static var AntModel:Class;
-		
-		// //ground texture
-		// [Embed(source="/../embeds/CoarseRedSand.jpg")]
-		// public static var SandTexture:Class;
-		
 		//engine variables
 		private var _view:View3D;
 		private var _cameraController:HoverController;
@@ -129,7 +113,6 @@ package;
 			//setup the view
 			_view = new View3D();
 			//_view.addSourceURL("srcview/index.html");
-			addChild(_view);
 			
 			//setup the camera for optimal shadow rendering
 			_view.camera.lens.far = 2100;
@@ -166,21 +149,11 @@ package;
 			_loader.loadData(new AntModel(), assetLoaderContext);
 			_view.scene.addChild(_loader);
 			
-			
-			//add signature
-			// _signature = new SignatureSwf();
-			// _signatureBitmap = new Bitmap(new BitmapData(_signature.width, _signature.height, true, 0));
-			// stage.quality = StageQuality.HIGH;
-			// _signatureBitmap.bitmapData.draw(_signature);
-			// stage.quality = StageQuality.LOW;
-			// addChild(_signatureBitmap);
-			
 			//add stats panel
 			//addChild(new AwayStats(_view));
 			
 			//add listeners
-			//addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			_view.stage3DProxy.context3D.setRenderMethod(onEnterFrame);
+			_view.stage3DProxy.setRenderCallback(onEnterFrame);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			stage.addEventListener(Event.RESIZE, onResize);
@@ -213,15 +186,7 @@ package;
 			trace("Basic_Load3DS.onAssetComplete:"+Std.string(event.asset.assetType));
 			if (event.asset.assetType == AssetType.MESH) {
 				var mesh:Mesh = cast(event.asset, Mesh);
-                mesh.material = new away3d.materials.TextureMaterial(Cast.bitmapTexture(AntTexture), true);
-				var material:TextureMaterial = cast(mesh.material, TextureMaterial);
-				material.lightPicker = _lightPicker;
-				material.gloss = 30;
-				material.specular = 1;
-				material.ambientColor = 0x303040;
-				material.ambient = 1;
-				//material.smooth = true;
-				//mesh.castsShadows = true;
+ 				//mesh.castsShadows = true;
 			} else if (event.asset.assetType == AssetType.MATERIAL) {
 				var material:TextureMaterial = cast(event.asset, TextureMaterial);
 				//material.shadowMethod = new FilteredShadowMapMethod(_light);
@@ -271,7 +236,6 @@ package;
 		{
 			_view.width = stage.stageWidth;
 			_view.height = stage.stageHeight;
-			//_signatureBitmap.y = stage.stageHeight - _signature.height;
 		}
 	}
 

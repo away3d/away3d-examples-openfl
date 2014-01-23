@@ -57,11 +57,7 @@ import flash.geom.Vector3D;
 @:bitmap("embeds/floor_diffuse.jpg") class FloorDiffuse extends BitmapData {}
 
 class Basic_View extends Sprite
-{
-	//plane texture
-	//[Embed(source="/../embeds/floor_diffuse.jpg")]
-	//public static var FloorDiffuse:Class;
-	
+{	
 	//engine variables
 	private var _view:View3D;
 	
@@ -79,7 +75,6 @@ class Basic_View extends Sprite
 
 		//setup the view
 		_view = new View3D();
-		addChild(_view);
 		
 		//setup the camera
 		_view.camera.z = -600;
@@ -91,8 +86,7 @@ class Basic_View extends Sprite
 		_view.scene.addChild(_plane);
 		
 		//setup the render loop
-		_view.stage3DProxy.context3D.setRenderMethod(_onEnterFrame);
-		//addEventListener(Event.ENTER_FRAME, _onEnterFrame);
+		_view.stage3DProxy.setRenderCallback(_onEnterFrame);
 		stage.addEventListener(Event.RESIZE, onResize);
 		onResize();
 
