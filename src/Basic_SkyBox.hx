@@ -124,7 +124,7 @@ package;
 			_torus.rotationY += 1;
 			
 			_view.camera.position = new Vector3D();
-			_view.camera.rotationY += 0.5*(stage.mouseX-stage.stageWidth/2)/800;
+			_view.camera.rotationY += 0.5*(Math.isNaN(stage.mouseX)?0:stage.mouseX-stage.stageWidth/2)/800;
 			_view.camera.moveBackward(600);
 			
 			_view.render();
