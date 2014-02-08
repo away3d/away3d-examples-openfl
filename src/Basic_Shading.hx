@@ -263,8 +263,8 @@ package;
 		private function onEnterFrame(event:Event):Void
 		{
 			if (move) {
-			 	cameraController.panAngle = 0.3*(stage.mouseX - lastMouseX) + lastPanAngle;
-			 	cameraController.tiltAngle = 0.3*(stage.mouseY - lastMouseY) + lastTiltAngle;
+			 	cameraController.panAngle = 0.3*(Math.isNaN(stage.mouseX)?0:stage.mouseX - lastMouseX) + lastPanAngle;
+			 	cameraController.tiltAngle = 0.3*(Math.isNaN(stage.mouseY)?0:stage.mouseY - lastMouseY) + lastTiltAngle;
 			}
 			
 			light1.direction = new Vector3D(Math.sin(Lib.getTimer()/10000)*150000, 1000, Math.cos(Lib.getTimer()/10000)*150000);
@@ -279,8 +279,8 @@ package;
 		{
 			lastPanAngle = cameraController.panAngle;
 			lastTiltAngle = cameraController.tiltAngle;
-			lastMouseX = stage.mouseX;
-			lastMouseY = stage.mouseY;
+			lastMouseX = Math.isNaN(stage.mouseX)?0:stage.mouseX ;
+			lastMouseY = Math.isNaN(stage.mouseY)?0:stage.mouseY ;
 			move = true;
 			stage.addEventListener(Event.MOUSE_LEAVE, onStageMouseLeave);
 		}
