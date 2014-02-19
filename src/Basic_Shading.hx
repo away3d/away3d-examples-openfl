@@ -45,6 +45,7 @@ package;
 	import away3d.lights.*;
 	import away3d.materials.*;
 	import away3d.materials.lightpickers.StaticLightPicker;
+	import away3d.materials.methods.FilteredShadowMapMethod;
 	import away3d.primitives.*;
 	import away3d.textures.BitmapTexture;
 	import away3d.utils.*;
@@ -172,19 +173,20 @@ package;
 			sphereMaterial = new TextureMaterial(Cast.bitmapTexture(BeachBallDiffuse));
 			sphereMaterial.specularMap = Cast.bitmapTexture(BeachBallSpecular);
 			sphereMaterial.lightPicker = lightPicker;
-			
+			sphereMaterial.shadowMethod = new FilteredShadowMapMethod(light1);  
 			cubeMaterial = new TextureMaterial(Cast.bitmapTexture(TrinketDiffuse));
 			cubeMaterial.specularMap = Cast.bitmapTexture(TrinketSpecular);
 			cubeMaterial.normalMap = Cast.bitmapTexture(TrinketNormals);
 			cubeMaterial.lightPicker = lightPicker;
 			cubeMaterial.mipmap = false;
-			
+			//cubeMaterial.shadowMethod = new FilteredShadowMapMethod(light1);  
 			var weaveDiffuseTexture:BitmapTexture = Cast.bitmapTexture(WeaveDiffuse);
 			torusMaterial = new TextureMaterial(weaveDiffuseTexture);
 			torusMaterial.specularMap = weaveDiffuseTexture;
 			torusMaterial.normalMap = Cast.bitmapTexture(WeaveNormals);
 			torusMaterial.lightPicker = lightPicker;
 			torusMaterial.repeat = true;
+			//torusMaterial.shadowMethod = new FilteredShadowMapMethod(light1); 
 		}
 		
 		/**
@@ -207,7 +209,7 @@ package;
 			
 			scene.addChild(light2);
 			
-			lightPicker = new StaticLightPicker([light1, light2]);
+			lightPicker = new StaticLightPicker([light1  , light2]);
 		}
 		
 		/**
