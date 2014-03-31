@@ -13,14 +13,14 @@
 	<app main="Basic_View" file="Basic_View" path="Export" /-->
 
     <window width="1024" height="700" if="desktop" />
-    <window orientation="landscape" fps="60" vsync="true"/>
+    <window width="0" height="0" if="html5" />
+    <window orientation="landscape" fps="60" vsync="true" if="cpp"/>
 	
 	<source path="src" />
 
-	<classpath path="../openfl-stage3d/src" />
-	<classpath path="../stage3d-glsl-master/src" />
 	<classpath path="../away3d-core-openfl/src" />
 	
+	<set name="html5-backend" value="openfl-html5-dom" />
 	<haxelib name="openfl" />
 	
 	<assets path="embeds" exclude="nme.svg" />

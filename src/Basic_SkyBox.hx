@@ -49,6 +49,7 @@ package;
 	import flash.display.*;
 	import flash.events.*;
 	import flash.geom.Vector3D;
+	import flash.Vector;
 
 @:bitmap("embeds/skybox/snow_negative_x.jpg") class EnvNegX extends BitmapData {}
 @:bitmap("embeds/skybox/snow_negative_y.jpg") class EnvNegY extends BitmapData {}
@@ -80,6 +81,7 @@ package;
 			
 			//setup the view
 			_view = new View3D();
+			addChild(_view);
 			
 			//setup the camera
 			_view.camera.z = -600;
@@ -106,7 +108,7 @@ package;
 			_view.scene.addChild(_skyBox);
 			
 			//setup the render loop
-			_view.stage3DProxy.setRenderCallback(_onEnterFrame);
+			_view.setRenderCallback(_onEnterFrame);
 			stage.addEventListener(Event.RESIZE, onResize);
 			onResize();
 
@@ -124,7 +126,7 @@ package;
 			_torus.rotationY += 1;
 			
 			_view.camera.position = new Vector3D();
-			_view.camera.rotationY += 0.5*(Math.isNaN(stage.mouseX)?0:stage.mouseX-stage.stageWidth/2)/800;
+			_view.camera.rotationY += 0.5*(stage.mouseX-stage.stageWidth/2)/800;
 			_view.camera.moveBackward(600);
 			
 			_view.render();

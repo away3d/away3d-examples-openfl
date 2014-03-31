@@ -75,6 +75,7 @@ class Basic_View extends Sprite
 
 		//setup the view
 		_view = new View3D();
+		this.addChild(_view);
 		
 		//setup the camera
 		_view.camera.z = -600;
@@ -86,13 +87,14 @@ class Basic_View extends Sprite
 		_view.scene.addChild(_plane);
 		
 		//setup the render loop
-		_view.stage3DProxy.setRenderCallback(_onEnterFrame);
+		_view.setRenderCallback(_onEnterFrame);
+		
 		stage.addEventListener(Event.RESIZE, onResize);
 		onResize();
 
-		var fps = new openfl.display.FPS(0, 0, 0xffffff);
+		var fps = new openfl.display.FPS(0, 0, 0xff0000);
 		fps.scaleX = fps.scaleY = 4;
-		this.addChild(fps);
+		stage.addChild(fps);
 	}
 	
 	/**
@@ -101,7 +103,7 @@ class Basic_View extends Sprite
 	private function _onEnterFrame(e:Event):Void
 	{
 		_plane.rotationY += 1;
-		
+
 		_view.render();
 	}
 	

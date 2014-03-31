@@ -60,9 +60,10 @@ package;
 	import flash.utils.*;
 
 	import flash.Lib;
+
+	import openfl.Assets;
 	
 @:bitmap("embeds/soldier_ant.jpg") class AntTexture extends BitmapData {}
-@:file("embeds/soldier_ant.3ds") class AntModel extends ByteArray {}
 @:bitmap("embeds/CoarseRedSand.jpg") class SandTexture extends BitmapData {}
 
 	class Basic_Load3DS extends Sprite
@@ -110,6 +111,7 @@ package;
 
 			//setup the view
 			_view = new View3D();
+			this.addChild(_view);
 			//_view.addSourceURL("srcview/index.html");
 			
 			//setup the camera for optimal shadow rendering
@@ -124,6 +126,17 @@ package;
 			_lightPicker = new StaticLightPicker([_light]);
 			_view.scene.addChild(_light);
 			
+			//setup materials
+			_groundMaterial = new TextureMaterial(Cast.bitmapTexture(SandTexture));
+			_groundMaterial.shadowMethod = new SoftShadowMapMethod( _light, 10, 5 );
+			_groundMaterial.shadowMethod.epsilon = 0.2;
+			_groundMaterial.lightPicker = _lightPicker;
+			_groundMaterial.specular = 0;
+			_ground = new Mesh(new PlaneGeometry(1000, 1000), _groundMaterial);
+			_ground.castsShadows =false;
+			_view.scene.addChild(_ground);
+			
+
 			//setup parser to be used on Loader3D
 			Parsers.enableAllBundled();
 			
@@ -131,31 +144,27 @@ package;
 			var assetLoaderContext:AssetLoaderContext = new AssetLoaderContext();
 			assetLoaderContext.mapUrlToData("texture.jpg", new AntTexture(256,256));
 			
-			//setup materials
-			_groundMaterial = new TextureMaterial(Cast.bitmapTexture(SandTexture));
-			_groundMaterial.shadowMethod = new FilteredShadowMapMethod(_light);
-			_groundMaterial.lightPicker = _lightPicker;
-			_groundMaterial.specular = 0;
-			_ground = new Mesh(new PlaneGeometry(1000, 1000), _groundMaterial);
-			_view.scene.addChild(_ground);
-			
 			//setup the scene
 			_loader = new Loader3D();
 			_loader.scale(300);
 			_loader.z = -200;
 			_loader.addEventListener(AssetEvent.ASSET_COMPLETE, onAssetComplete);
-			_loader.loadData(new AntModel(), assetLoaderContext);
+			_loader.loadData( Assets.getBytes("embeds/soldier_ant.3ds"), assetLoaderContext);
 			_view.scene.addChild(_loader);
 			
 			//add stats panel
 			//addChild(new AwayStats(_view));
 			
 			//add listeners
-			_view.stage3DProxy.setRenderCallback(onEnterFrame);
+			_view.setRenderCallback(onEnterFrame);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			stage.addEventListener(Event.RESIZE, onResize);
 			onResize();
+
+			var fps = new openfl.display.FPS(0, 0, 0xffffff);
+			fps.scaleX = fps.scaleY = 4;
+			this.addChild(fps);
 		}
 		
 		/**
@@ -169,7 +178,7 @@ package;
 			}
 			
 			_direction.x = -Math.sin(Lib.getTimer()/4000);
-			_direction.z = -Math.cos(Lib.getTimer()/4000);
+			_direction.z = -Math.cos(Lib.getTimer()/4000);	
 			_light.direction = _direction;
 			
 			_view.render();
@@ -181,12 +190,13 @@ package;
 		private function onAssetComplete(e:Event):Void
 		{
             var event:AssetEvent = cast(e, AssetEvent);
-			if (event.asset.assetType == AssetType.MESH) {
+			if (event.asset.assetType == away3d.library.assets.AssetType.MESH) {
 				var mesh:Mesh = cast(event.asset, Mesh);
  				mesh.castsShadows = true;
-			} else if (event.asset.assetType == AssetType.MATERIAL) {
+			} else if (event.asset.assetType == away3d.library.assets.AssetType.MATERIAL) {
 				var material:TextureMaterial = cast(event.asset, TextureMaterial);
-				material.shadowMethod = new FilteredShadowMapMethod(_light);
+				material.shadowMethod = new SoftShadowMapMethod( _light, 10, 5 );
+				material.shadowMethod.epsilon = 0.2;
 				material.lightPicker = _lightPicker;
 				material.gloss = 30;
 				material.specular = 1;

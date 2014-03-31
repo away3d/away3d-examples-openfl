@@ -45,7 +45,6 @@ package;
 	import away3d.lights.*;
 	import away3d.materials.*;
 	import away3d.materials.lightpickers.StaticLightPicker;
-	import away3d.materials.methods.FilteredShadowMapMethod;
 	import away3d.primitives.*;
 	import away3d.textures.BitmapTexture;
 	import away3d.utils.*;
@@ -142,6 +141,7 @@ package;
 			view.antiAlias = 4;
 			view.scene = scene;
 			view.camera = camera;
+			addChild(view);
 			
 			//setup controller to be used on the camera
 			cameraController = new HoverController(camera);
@@ -168,25 +168,23 @@ package;
 			planeMaterial.normalMap = Cast.bitmapTexture(FloorNormals);
 			planeMaterial.lightPicker = lightPicker;
 			planeMaterial.repeat = true;
-			planeMaterial.mipmap = false;
 			
 			sphereMaterial = new TextureMaterial(Cast.bitmapTexture(BeachBallDiffuse));
 			sphereMaterial.specularMap = Cast.bitmapTexture(BeachBallSpecular);
 			sphereMaterial.lightPicker = lightPicker;
-			sphereMaterial.shadowMethod = new FilteredShadowMapMethod(light1);  
+			
 			cubeMaterial = new TextureMaterial(Cast.bitmapTexture(TrinketDiffuse));
 			cubeMaterial.specularMap = Cast.bitmapTexture(TrinketSpecular);
 			cubeMaterial.normalMap = Cast.bitmapTexture(TrinketNormals);
 			cubeMaterial.lightPicker = lightPicker;
 			cubeMaterial.mipmap = false;
-			//cubeMaterial.shadowMethod = new FilteredShadowMapMethod(light1);  
+			
 			var weaveDiffuseTexture:BitmapTexture = Cast.bitmapTexture(WeaveDiffuse);
 			torusMaterial = new TextureMaterial(weaveDiffuseTexture);
 			torusMaterial.specularMap = weaveDiffuseTexture;
 			torusMaterial.normalMap = Cast.bitmapTexture(WeaveNormals);
 			torusMaterial.lightPicker = lightPicker;
 			torusMaterial.repeat = true;
-			//torusMaterial.shadowMethod = new FilteredShadowMapMethod(light1); 
 		}
 		
 		/**
@@ -251,8 +249,7 @@ package;
 		 */
 		private function initListeners():Void
 		{
-			//addEventListener(Event.ENTER_FRAME, onEnterFrame);
-			view.stage3DProxy.setRenderCallback(onEnterFrame);
+			view.setRenderCallback(onEnterFrame);
 			stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
 			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
 			stage.addEventListener(Event.RESIZE, onResize);
@@ -312,6 +309,5 @@ package;
 		{
 			view.width = stage.stageWidth;
 			view.height = stage.stageHeight;
-			//SignatureBitmap.y = stage.stageHeight - Signature.height;
 		}
 	}
