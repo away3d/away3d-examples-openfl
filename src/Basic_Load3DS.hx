@@ -136,7 +136,6 @@ package;
 			_ground.castsShadows =false;
 			_view.scene.addChild(_ground);
 			
-
 			//setup parser to be used on Loader3D
 			Parsers.enableAllBundled();
 			
@@ -148,7 +147,7 @@ package;
 			_loader = new Loader3D();
 			_loader.scale(300);
 			_loader.z = -200;
-			_loader.addEventListener(AssetEvent.ASSET_COMPLETE, onAssetComplete);
+			_loader.addEventListener(Asset3DEvent.ASSET_COMPLETE, onAssetComplete);
 			_loader.loadData( Assets.getBytes("embeds/soldier_ant.3ds"), assetLoaderContext);
 			_view.scene.addChild(_loader);
 			
@@ -189,11 +188,11 @@ package;
 		 */
 		private function onAssetComplete(e:Event):Void
 		{
-            var event:AssetEvent = cast(e, AssetEvent);
-			if (event.asset.assetType == away3d.library.assets.AssetType.MESH) {
+            var event:Asset3DEvent = cast(e, Asset3DEvent);
+			if (event.asset.assetType == away3d.library.assets.Asset3DType.MESH) {
 				var mesh:Mesh = cast(event.asset, Mesh);
  				mesh.castsShadows = true;
-			} else if (event.asset.assetType == away3d.library.assets.AssetType.MATERIAL) {
+			} else if (event.asset.assetType == away3d.library.assets.Asset3DType.MATERIAL) {
 				var material:TextureMaterial = cast(event.asset, TextureMaterial);
 				material.shadowMethod = new SoftShadowMapMethod( _light, 10, 5 );
 				material.shadowMethod.epsilon = 0.2;
@@ -217,7 +216,7 @@ package;
 			_move = true;
 			stage.addEventListener(Event.MOUSE_LEAVE, onStageMouseLeave);
 		}
-		
+
 		/**
 		 * Mouse up listener for navigation
 		 */

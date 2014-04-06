@@ -47,12 +47,15 @@ import away3d.lights.DirectionalLight;
 import away3d.materials.lightpickers.StaticLightPicker;
 import away3d.entities.Mesh;
 import away3d.primitives.SphereGeometry;
-import away3d.library.AssetLibrary;
+import away3d.library.Asset3DLibrary;
 import away3d.loaders.parsers.AWDParser;
-import away3d.events.AssetEvent;
+import away3d.events.Asset3DEvent;
 import away3d.library.assets.IAsset;
-import away3d.library.assets.AssetType;
+import away3d.library.assets.Asset3DType;
 import away3d.materials.TextureMaterial;
+import away3d.debug.AwayFPS;
+
+import openfl.Assets;
 
 class Basic_LoadAWD extends Sprite
 {
@@ -86,7 +89,7 @@ class Basic_LoadAWD extends Sprite
         initMaterials();
         initObjects();
         initListeners();
-    }
+   }
 
     /**
      * Initialise the engine
@@ -94,12 +97,15 @@ class Basic_LoadAWD extends Sprite
     private function initEngine():Void
     {
         _view = new View3D();
+        this.addChild(_view);
 
         //set the background of the view to something suitable
         _view.backgroundColor = 0x1e2125;
 
         //position the camera
         _view.camera.z = -2000;
+ 
+        this.addChild(new AwayFPS(_view, 0, 0, 0xffffff, 3));
     }
 
     /**
@@ -145,13 +151,13 @@ class Basic_LoadAWD extends Sprite
 
         onResize();
 
-        _view.stage3DProxy.setRenderCallback(onEnterFrame);
+        _view.setRenderCallback(onEnterFrame);
 
-        AssetLibrary.enableParser(AWDParser);
+        Asset3DLibrary.enableParser(AWDParser);
 
-        AssetLibrary.addEventListener(AssetEvent.ASSET_COMPLETE, onAssetComplete, this);
+        Asset3DLibrary.addEventListener(Asset3DEvent.ASSET_COMPLETE, onAssetComplete);
 
-        AssetLibrary.load(new URLRequest('embeds/suzanne.awd'));
+        Asset3DLibrary.loadData(Assets.getBytes('embeds/suzanne.awd'));
     }
 
     /**
@@ -168,13 +174,13 @@ class Basic_LoadAWD extends Sprite
     /**
      * Listener function for asset complete event on loader
      */
-    private function onAssetComplete (event:AssetEvent)
+    private function onAssetComplete (event:Asset3DEvent)
     {
         var asset:IAsset = event.asset;
 
         switch (asset.assetType)
         {
-            case AssetType.MESH :
+            case Asset3DType.MESH :
                 var mesh:Mesh = cast(asset, Mesh);
                 mesh.y = -300;
                 mesh.scale(900);
@@ -182,9 +188,7 @@ class Basic_LoadAWD extends Sprite
                 _suzanne = mesh;
                 _view.scene.addChild(mesh);
 
-            case AssetType.GEOMETRY:
-
-            case AssetType.MATERIAL:
+            case Asset3DType.MATERIAL:
                 //*
                 var material:TextureMaterial = cast(asset, TextureMaterial);
                 material.lightPicker = _lightPicker;
