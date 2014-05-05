@@ -91,7 +91,7 @@ package;
 	class Intermediate_MD5Animation extends Sprite
 	{
 		//hellknight mesh
-		private static var HellKnight_Mesh = Assets.getBytes("embeds/hellknight/hellknight.md5mesh");
+		private static var HellKnight_Mesh:ByteArray;
 
 		//hellknight animations
 		private var HellKnight_Idle2:ByteArray;
@@ -174,8 +174,7 @@ package;
 		 * Global initialise function
 		 */
 		private function init()
-		{
-			
+		{		
 			HellKnight_Mesh = Assets.getBytes("embeds/hellknight/hellknight.md5mesh");
 
 			HellKnight_Idle2 = Assets.getBytes("embeds/hellknight/idle2.md5anim");
@@ -192,6 +191,7 @@ package;
 			HellKnight_RangeAttack2 = Assets.getBytes("embeds/hellknight/range_attack2.md5anim");
 
 			ANIM_CLASSES = [HellKnight_Idle2, HellKnight_Walk7, HellKnight_Attack3, HellKnight_TurretAttack, HellKnight_Attack2, HellKnight_Chest, HellKnight_Roar1, HellKnight_LeftSlash, HellKnight_HeadPain, HellKnight_Pain1, HellKnight_PainLUPArm, HellKnight_RangeAttack2];
+			
 			initEngine();
 			initText();
 			initLights();
@@ -232,7 +232,6 @@ package;
 		private function initText()
 		{
 			text = new TextField();
-			text.x = stage.stageWidth - 240;
 			text.defaultTextFormat = new TextFormat("_sans", 11, 0xFFFFFF);
 			text.width = 240;
 			text.height = 100;
@@ -280,17 +279,17 @@ package;
 			whiteLight.castsShadows = true;
 			whiteLight.ambient = 1;
 			whiteLight.ambientColor = 0x303040;
-			whiteLight.shadowMapper = new NearDirectionalShadowMapper(.2);
+			whiteLight.shadowMapper = new NearDirectionalShadowMapper(0.2);
 			scene.addChild(whiteLight);
 
 			lightPicker = new StaticLightPicker([redLight, blueLight, whiteLight]);
 
 			//create a global shadow method
-			shadowMapMethod = new NearShadowMapMethod(new SoftShadowMapMethod(whiteLight, 10, 10));
-			shadowMapMethod.epsilon = .1;
+			shadowMapMethod = new NearShadowMapMethod(new SoftShadowMapMethod(whiteLight, 15, 10));
+			shadowMapMethod.epsilon = 0.2;
 
 			//create a global fog method
-			fogMethod = new FogMethod(0, camera.lens.far*0.5, 0x000000);
+			fogMethod = new FogMethod(0, camera.lens.far*0.5, 0x0);
 		}
 
 		/**
@@ -348,9 +347,6 @@ package;
 			//create light billboards
 			redLight.addChild(new Sprite3D(redLightMaterial, 200, 200));
 			blueLight.addChild(new Sprite3D(blueLightMaterial, 200, 200));
-
-			//AssetLibrary.enableParser(MD5MeshParser);
-			//AssetLibrary.enableParser(MD5AnimParser);
 
 			initMesh();
 
@@ -663,6 +659,29 @@ package;
 		{
 			view.width = stage.stageWidth;
 			view.height = stage.stageHeight;
+
+			text.x = stage.stageWidth - 240;
+			
+			var siz = stage.stageWidth/20;
+			var b:DisplayObject;
+			for (i in 0...10) {
+				b = getChildByName("action"+i);
+				b.x = (i * siz * 2)+siz;
+				b.y = stage.stageHeight-siz;
+			}
+
+			b = getChildByName("forward"); 
+			b.x = stage.stageWidth-(siz*2);
+			b.y = (stage.stageHeight * 0.65) - siz;
+			b = getChildByName("backward");
+			b.x = stage.stageWidth-(siz*2);
+			b.y = (stage.stageHeight * 0.65) + siz;
+			b = getChildByName("left");
+			b.x = stage.stageWidth-(siz*3);
+			b.y = (stage.stageHeight * 0.65);
+			b = getChildByName("right");
+			b.x = stage.stageWidth-siz;
+			b.y = (stage.stageHeight * 0.65);
 		}
 	}
 
