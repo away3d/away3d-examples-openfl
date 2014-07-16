@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="MD5 Animation A3D OpenFL" package="com.geepers.IntermediateMD5Animation" version="1.0.0" />
+	<app main="Intermediate_MD5Animation" file="Intermediate_MD5Animation" path="Export" />
+	
+    <window width="1024" height="700" if="desktop" />
+    <window width="0" height="0" if="html5" />
+    <window orientation="landscape" vsync="true" if="cpp"/>
+	<window fps="60" hardware="true" allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" />
+		
+	<source path="src" />
+	
+	<haxelib name="format" if="html5" />
+	<haxelib name="away3d" />
+	<haxelib name="openfl" />
+	
+	<assets path="embeds" exclude="openfl.svg" />
+
+	<icon path="embeds/openfl.svg" />
+	
+	<haxedef name="source-map-content" if="html5" />
+	<haxedef name="dom" if="html5" />
+
+	<android minimum-sdk-version="10" />
+
+</project>
