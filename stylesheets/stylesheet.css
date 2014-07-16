@@ -245,3 +245,17 @@ a {
 .cf {
   zoom:1;
 }
+
+div.example {
+  clear:both;
+  padding-top: 1em;
+}
+
+div.example p {
+  float: left;
+  margin-right: 2em;
+}
+
+div.example img {
+  float: right;
+}
