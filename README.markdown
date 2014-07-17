@@ -5,43 +5,46 @@ Away3D for OpenFl is a port of the Flash Away3D engine, enabling OpenFL C++ nati
 builds for OSX, Windows, iOS, Android and maybe others.
 
 ##Installation
-Simply download the source files and ensure you have away3d-core-openfl and openfl-stage3d 
-haxe libraries avialable either as haxelib installations or directly with the github source.
 
-A typical project.xml file would look like
+    haxelib install away3d-examples
+    
+Or if you would like to install a specific example use the following.
+
+    lime create away3d      // To list all of the available examples
+    lime create away3d:Basic_View      // To install the Basic_View example
+    lime create away3d:Basic_View /destinationFolder  // To install the example to a specific location
+    
+A typical project.xml file would look as follows. Each example has it's own project.xml.
 
     <?xml version="1.0" encoding="utf-8"?>
     <project>
-        <meta title="Basic View Away3D OpenFL" package="example.away3d" version="1.0.0" />
+        <meta title="Basic View Example" package="com.geepers.BasicView" version="1.0.0" />
         <app main="Basic_View" file="Basic_View" path="Export" />
         <window width="1024" height="700" if="desktop" />
-        <window orientation="landscape" fps="60" />
-        <window depth-buffer="true" />
+        <window width="0" height="0" if="html5" />
+        <window orientation="landscape" vsync="true" if="cpp"/>
+        <window fps="60" hardware="true" allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" />
         <source path="src" />
-        <classpath path="away3d-core-openfl" />
+        <haxelib name="format" if="html5" />
+        <haxelib name="away3d" />
         <haxelib name="openfl" />
-        <assets path="Assets" exclude="nme.svg" />
-        <icon path="Assets/nme.svg" />
+        <assets path="embeds" exclude="openfl.svg" />
+        <icon path="embeds/openfl.svg" />
+        <haxedef name="source-map-content" if="html5" />
+        <haxedef name="dom" if="html5" />
+        <android minimum-sdk-version="10" />
     </project>
-
+	
+	
 ##Dependencies
-Requires [away3d-core-openfl](https://github.com/away3d/away3d-core-openfl) & 
-[openfl-stage3d](https://github.com/wighawag/openfl-stage3d) to be installed.
+Requires OpenFL 2.0.1 and the Away3D library
 
-    haxelib install openfl-stage3d
+    haxelib install away3d
+    
+__NOTE: Currently the GitHub master of OpenFL is required as it contains classes which are not in the released version.__
     
 ##License
 
 Copyright 2014 The Away3D Team
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+The Away3D OpenFL port is free, open-source software under the MIT license.
