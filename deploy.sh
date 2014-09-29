@@ -38,6 +38,8 @@ function usage {
 	echo
 	echo "When specifying a target but no application folder, all folders within the"
 	echo "current project are deployed if they contain the project's target files."
+	echo
+	echo "NOTE: Ensure project name matches folder name"
 	exit 1
 }
  
@@ -87,6 +89,7 @@ else
 		if [ "$#" -eq 2 ]
 		then
 			DEVID=$(system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p' -e '/iPhone/,/Serial/p' | grep "Serial Number:" | awk -F ": " '{print $2}')
+			
 			for DIR in $(find . -type d -maxdepth 1 -not -name . -not -name .git); 
 			do
 				if [ -d "${DIR}/Export/ios/build/${TYPE}-iphoneos/${DIR}.app" ]
