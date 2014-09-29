@@ -1,14 +1,14 @@
 {
 	"name": "away3d-examples",
 	"url": "http://away3d.com",
-	"license": "MIT",
+	"license": "Apache 2.0",
 	"tags": [ "away3d", "3d", "engine", "openfl", "cross", "cpp", "flash", "game", "js", "web", "ios", "android" ],
 	"description": "Away3D is an open source, real time 3D engine for the Flash Platform and has been ported to OpenFL 2.x/Haxe",
-	"version": "1.0.3-alpha",
-	"releasenote": "Addition of Intermediate_MouseInteraction demo",
-	"contributors": [ "Greg209" ],
+	"version": "1.0.0-alpha",
+	"releasenote": "Addition of Intermediate Mouse Interaction demo",
+	"contributors": [ "greg209" ],
 	"dependencies": {
 		"openfl": "2.0.1",
-		"away3d": "1.0.3-alpha"
+		"away3d": "1.0.0-alpha"
 	}
 }
