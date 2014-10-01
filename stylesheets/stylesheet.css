@@ -251,9 +251,10 @@ div.example {
   padding-top: 1em;
 }
 
-div.example p {
-  float: left;
-  margin-right: 2em;
+div.example span {
+  font-size: 12px;
+  padding-left: 1em;
+  display: block;
 }
 
 div.example img {
