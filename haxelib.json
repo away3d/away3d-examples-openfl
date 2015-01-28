@@ -9,6 +9,6 @@
 	"contributors": [ "Greg209" ],
 	"dependencies": {
 		"openfl": "2.2.4",
-		"away3d": "1.1"
+		"away3d": "1.1.0"
 	}
 }
