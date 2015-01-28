@@ -4,11 +4,11 @@
 	"license": "MIT",
 	"tags": [ "away3d", "3d", "engine", "openfl", "cross", "cpp", "flash", "game", "js", "web", "ios", "android" ],
 	"description": "Away3D is an open source, real time 3D engine for the Flash Platform and has been ported to OpenFL 2.x/Haxe",
-	"version": "1.0.4-alpha",
-	"releasenote": "Addition of Basic Mip-mapping demo",
+	"version": "1.1",
+	"releasenote": "Updates icons to new Away3d/OpenFL icon. Edits now in line with latest libraries",
 	"contributors": [ "Greg209" ],
 	"dependencies": {
-		"openfl": "2.0.1",
-		"away3d": "1.0.4-alpha"
+		"openfl": "2.2.4",
+		"away3d": "1.1"
 	}
 }

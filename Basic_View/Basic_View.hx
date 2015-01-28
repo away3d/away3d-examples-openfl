@@ -52,6 +52,8 @@ import openfl.display.BitmapData;
 import openfl.display.Bitmap;
 import openfl.events.Event;
 import openfl.geom.Vector3D;
+import openfl.Lib;
+import haxe.Timer;
 
 class Basic_View extends Sprite
 {	
@@ -67,6 +69,7 @@ class Basic_View extends Sprite
 	public function new ()
 	{
 		super();
+
 		stage.scaleMode = StageScaleMode.NO_SCALE;
 		stage.align = StageAlign.TOP_LEFT;
 

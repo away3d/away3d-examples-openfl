@@ -56,6 +56,7 @@ import openfl.utils.*;
 
 import openfl.Lib;
 import openfl.Assets;
+import openfl.Vector;
 
 class Basic_Shading extends Sprite
 {
@@ -191,7 +192,7 @@ class Basic_Shading extends Sprite
 		
 		scene.addChild(light2);
 		
-		lightPicker = new StaticLightPicker([light1  , light2]);
+		lightPicker = new StaticLightPicker( [ light1  , light2 ] );
 	}
 	
 	/**

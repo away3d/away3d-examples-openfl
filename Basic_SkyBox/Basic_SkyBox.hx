@@ -50,6 +50,8 @@ import openfl.display.*;
 import openfl.events.*;
 import openfl.geom.Vector3D;
 
+import openfl.Lib;
+
 class Basic_SkyBox extends Sprite
 {		
 	//engine variables
@@ -68,6 +70,8 @@ class Basic_SkyBox extends Sprite
 
 		stage.scaleMode = StageScaleMode.NO_SCALE;
 		stage.align = StageAlign.TOP_LEFT;
+
+		Lib.current.stage.color = 0x00;
 		
 		//setup the view
 		_view = new View3D();

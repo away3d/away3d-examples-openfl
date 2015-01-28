@@ -15,9 +15,9 @@
 	<haxelib name="away3d" />
 	<haxelib name="openfl" />
 	
-	<assets path="embeds" exclude="openfl.svg" />
+	<assets path="embeds" exclude="away3d.svg" />
 
-	<icon path="embeds/openfl.svg" />
+	<icon path="embeds/away3d.svg" />
 	
 	<haxedef name="source-map-content" if="html5" />
 	<haxedef name="dom" if="html5" />

@@ -173,7 +173,7 @@ class Basic_Load3DS extends Sprite
 	 */
 	private function onAssetComplete(e:Event):Void
 	{
-        var event:Asset3DEvent = cast(e, Asset3DEvent);
+		var event:Asset3DEvent = cast(e, Asset3DEvent);
 		if (event.asset.assetType == away3d.library.assets.Asset3DType.MESH) {
 			var mesh:Mesh = cast(event.asset, Mesh);
 			//mesh.castsShadows = true;
