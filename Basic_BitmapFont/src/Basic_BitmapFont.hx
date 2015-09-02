@@ -81,11 +81,9 @@ class Basic_BitmapFont extends Sprite
 		
 		stage.addEventListener(Event.RESIZE, onResize);
 		onResize();
-
-		this.stage.frameRate = 60;
 		
 		// stats
-		this.addChild(new away3d.debug.AwayFPS(_view, 10, 10, 0xffffff, 3));
+		addChild(new AwayStats(_view));
 	}
 	
 	private function Update(e:Event):Void 
