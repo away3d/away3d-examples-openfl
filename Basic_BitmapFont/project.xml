@@ -7,7 +7,7 @@
     <window width="1024" height="700" if="desktop" />
 	<window width="0" height="0" if="html5" />
 	<window orientation="landscape" vsync="true" if="cpp"/>
-	<window fps="0" hardware="true" allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" />
+	<window fps="60" hardware="true" allow-shaders="true" require-shaders="true" depth-buffer="true" stencil-buffer="true" />
 	
 	<source path="src" />
 	<haxelib name="format" if="html5" />
